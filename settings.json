@@ -1,0 +1,11 @@
+{
+  "target": "http://bugvul.py4.me/vul/sqlinject/mysql/get_orderby.php?id=1",
+  "host": "",
+  "header": {},
+  "tech": "B",
+  "cookie": "",
+  "chunk": false,
+  "gzip_encoding": false,
+  "data": "",
+  "method": ""
+}

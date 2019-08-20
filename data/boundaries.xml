@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+    <!-- Generic boundaries -->
+    <boundary>
+        <level>3</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>1</ptype>
+        <prefix>)</prefix>
+        <suffix>[GENERIC_SQL_COMMENT]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>4</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>2</ptype>
+        <prefix>')</prefix>
+        <suffix>[GENERIC_SQL_COMMENT]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>3</level>
+        <clause>1,2,3</clause>
+        <where>1,2</where>
+        <ptype>2</ptype>
+        <prefix>'</prefix>
+        <suffix>[GENERIC_SQL_COMMENT]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>5</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>4</ptype>
+        <prefix>"</prefix>
+        <suffix>[GENERIC_SQL_COMMENT]</suffix>
+    </boundary>
+    <!-- End of generic boundaries -->
+
+    <!-- WHERE/HAVING clause boundaries -->
+    <boundary>
+        <level>1</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>1</ptype>
+        <prefix>)</prefix>
+        <suffix> AND ([RANDNUM]=[RANDNUM]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>2</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>1</ptype>
+        <prefix>))</prefix>
+        <suffix> AND (([RANDNUM]=[RANDNUM]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>3</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>1</ptype>
+        <prefix>)))</prefix>
+        <suffix> AND ((([RANDNUM]=[RANDNUM]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>1</level>
+        <clause>0</clause>
+        <where>1,2,3</where>
+        <ptype>1</ptype>
+        <prefix></prefix>
+        <suffix></suffix>
+    </boundary>
+
+    <boundary>
+        <level>1</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>2</ptype>
+        <prefix>')</prefix>
+        <suffix> AND ('[RANDSTR]'='[RANDSTR]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>2</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>2</ptype>
+        <prefix>'))</prefix>
+        <suffix> AND (('[RANDSTR]'='[RANDSTR]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>3</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>2</ptype>
+        <prefix>')))</prefix>
+        <suffix> AND ((('[RANDSTR]'='[RANDSTR]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>1</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>2</ptype>
+        <prefix>'</prefix>
+        <suffix> AND '[RANDSTR]'='[RANDSTR]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>2</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>3</ptype>
+        <prefix>')</prefix>
+        <suffix> AND ('[RANDSTR]' LIKE '[RANDSTR]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>3</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>3</ptype>
+        <prefix>'))</prefix>
+        <suffix> AND (('[RANDSTR]' LIKE '[RANDSTR]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>4</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>3</ptype>
+        <prefix>')))</prefix>
+        <suffix> AND ((('[RANDSTR]' LIKE '[RANDSTR]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>2</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>3</ptype>
+        <prefix>'</prefix>
+        <suffix> AND '[RANDSTR]' LIKE '[RANDSTR]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>2</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>4</ptype>
+        <prefix>")</prefix>
+        <suffix> AND ("[RANDSTR]"="[RANDSTR]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>3</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>4</ptype>
+        <prefix>"))</prefix>
+        <suffix> AND (("[RANDSTR]"="[RANDSTR]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>4</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>4</ptype>
+        <prefix>")))</prefix>
+        <suffix> AND ((("[RANDSTR]"="[RANDSTR]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>2</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>4</ptype>
+        <prefix>"</prefix>
+        <suffix> AND "[RANDSTR]"="[RANDSTR]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>3</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>5</ptype>
+        <prefix>")</prefix>
+        <suffix> AND ("[RANDSTR]" LIKE "[RANDSTR]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>4</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>5</ptype>
+        <prefix>"))</prefix>
+        <suffix> AND (("[RANDSTR]" LIKE "[RANDSTR]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>5</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>5</ptype>
+        <prefix>")))</prefix>
+        <suffix> AND ((("[RANDSTR]" LIKE "[RANDSTR]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>3</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>5</ptype>
+        <prefix>"</prefix>
+        <suffix> AND "[RANDSTR]" LIKE "[RANDSTR]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>1</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>1</ptype>
+        <prefix></prefix>
+        <suffix>[GENERIC_SQL_COMMENT]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>3</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>1</ptype>
+        <prefix></prefix>
+        <suffix># [RANDSTR]</suffix>
+    </boundary>
+
+    <!--     e.g. admin' AND [INFERENCE] OR 'foo'='bar' AND password=$password -->
+    <boundary>
+        <level>3</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>2</ptype>
+        <prefix>'</prefix>
+        <suffix> OR '[RANDSTR1]'='[RANDSTR2]</suffix>
+    </boundary>
+    <!-- End of WHERE/HAVING clause boundaries -->
+
+    <!-- Pre-WHERE generic boundaries (e.g. "UPDATE table SET '$_REQUEST["name"]' WHERE id=1" or "INSERT INTO table VALUES('$_REQUEST["value"]') WHERE id=1)"-->
+    <boundary>
+        <level>5</level>
+        <clause>9</clause>
+        <where>1,2</where>
+        <ptype>2</ptype>
+        <prefix>') WHERE [RANDNUM]=[RANDNUM]</prefix>
+        <suffix>[GENERIC_SQL_COMMENT]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>5</level>
+        <clause>9</clause>
+        <where>1,2</where>
+        <ptype>2</ptype>
+        <prefix>") WHERE [RANDNUM]=[RANDNUM]</prefix>
+        <suffix>[GENERIC_SQL_COMMENT]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>4</level>
+        <clause>9</clause>
+        <where>1,2</where>
+        <ptype>1</ptype>
+        <prefix>) WHERE [RANDNUM]=[RANDNUM]</prefix>
+        <suffix>[GENERIC_SQL_COMMENT]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>4</level>
+        <clause>9</clause>
+        <where>1,2</where>
+        <ptype>2</ptype>
+        <prefix>' WHERE [RANDNUM]=[RANDNUM]</prefix>
+        <suffix>[GENERIC_SQL_COMMENT]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>5</level>
+        <clause>9</clause>
+        <where>1,2</where>
+        <ptype>4</ptype>
+        <prefix>" WHERE [RANDNUM]=[RANDNUM]</prefix>
+        <suffix>[GENERIC_SQL_COMMENT]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>4</level>
+        <clause>9</clause>
+        <where>1,2</where>
+        <ptype>1</ptype>
+        <prefix> WHERE [RANDNUM]=[RANDNUM]</prefix>
+        <suffix>[GENERIC_SQL_COMMENT]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>5</level>
+        <clause>9</clause>
+        <where>1</where>
+        <ptype>2</ptype>
+        <prefix>'||(SELECT '[RANDSTR]' WHERE [RANDNUM]=[RANDNUM]</prefix>
+        <suffix>)||'</suffix>
+    </boundary>
+
+    <boundary>
+        <level>5</level>
+        <clause>9</clause>
+        <where>1</where>
+        <ptype>2</ptype>
+        <prefix>'||(SELECT '[RANDSTR]' FROM DUAL WHERE [RANDNUM]=[RANDNUM]</prefix>
+        <suffix>)||'</suffix>
+    </boundary>
+
+    <boundary>
+        <level>5</level>
+        <clause>9</clause>
+        <where>1</where>
+        <ptype>2</ptype>
+        <prefix>'+(SELECT '[RANDSTR]' WHERE [RANDNUM]=[RANDNUM]</prefix>
+        <suffix>)+'</suffix>
+    </boundary>
+
+    <boundary>
+        <level>5</level>
+        <clause>9</clause>
+        <where>1</where>
+        <ptype>2</ptype>
+        <prefix>||(SELECT '[RANDSTR]' FROM DUAL WHERE [RANDNUM]=[RANDNUM]</prefix>
+        <suffix>)||</suffix>
+    </boundary>
+
+    <boundary>
+        <level>5</level>
+        <clause>9</clause>
+        <where>1</where>
+        <ptype>2</ptype>
+        <prefix>||(SELECT '[RANDSTR]' WHERE [RANDNUM]=[RANDNUM]</prefix>
+        <suffix>)||</suffix>
+    </boundary>
+
+    <boundary>
+        <level>5</level>
+        <clause>9</clause>
+        <where>1</where>
+        <ptype>1</ptype>
+        <prefix>+(SELECT [RANDSTR] WHERE [RANDNUM]=[RANDNUM]</prefix>
+        <suffix>)+</suffix>
+    </boundary>
+
+    <boundary>
+        <level>5</level>
+        <clause>9</clause>
+        <where>1</where>
+        <ptype>2</ptype>
+        <prefix>+(SELECT '[RANDSTR]' WHERE [RANDNUM]=[RANDNUM]</prefix>
+        <suffix>)+</suffix>
+    </boundary>
+    <!-- End of pre-WHERE generic boundaries -->
+
+    <!-- Pre-WHERE derived table boundaries - e.g. "SELECT * FROM (SELECT column FROM table WHERE column LIKE '%$_REQUEST["name"]%') AS t1"-->
+    <boundary>
+        <level>5</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>2</ptype>
+        <prefix>')) AS [RANDSTR] WHERE [RANDNUM]=[RANDNUM]</prefix>
+        <suffix>[GENERIC_SQL_COMMENT]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>5</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>2</ptype>
+        <prefix>")) AS [RANDSTR] WHERE [RANDNUM]=[RANDNUM]</prefix>
+        <suffix>[GENERIC_SQL_COMMENT]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>5</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>1</ptype>
+        <prefix>)) AS [RANDSTR] WHERE [RANDNUM]=[RANDNUM]</prefix>
+        <suffix>[GENERIC_SQL_COMMENT]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>4</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>2</ptype>
+        <prefix>') AS [RANDSTR] WHERE [RANDNUM]=[RANDNUM]</prefix>
+        <suffix>[GENERIC_SQL_COMMENT]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>5</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>4</ptype>
+        <prefix>") AS [RANDSTR] WHERE [RANDNUM]=[RANDNUM]</prefix>
+        <suffix>[GENERIC_SQL_COMMENT]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>4</level>
+        <clause>1</clause>
+        <where>1,2</where>
+        <ptype>1</ptype>
+        <prefix>) AS [RANDSTR] WHERE [RANDNUM]=[RANDNUM]</prefix>
+        <suffix>[GENERIC_SQL_COMMENT]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>4</level>
+        <clause>1</clause>
+        <where>1</where>
+        <ptype>1</ptype>
+        <prefix>` WHERE [RANDNUM]=[RANDNUM]</prefix>
+        <suffix>[GENERIC_SQL_COMMENT]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>5</level>
+        <clause>1</clause>
+        <where>1</where>
+        <ptype>1</ptype>
+        <prefix>`) WHERE [RANDNUM]=[RANDNUM]</prefix>
+        <suffix>[GENERIC_SQL_COMMENT]</suffix>
+    </boundary>
+    <!-- End of pre-WHERE derived table boundaries -->
+
+    <!-- Escaped column name (e.g. SELECT `...` FROM table) boundaries -->
+    <boundary>
+        <level>4</level>
+        <clause>8</clause>
+        <where>1</where>
+        <ptype>6</ptype>
+        <prefix>`=`[ORIGINAL]`</prefix>
+        <suffix> AND `[ORIGINAL]`=`[ORIGINAL]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>5</level>
+        <clause>8</clause>
+        <where>1</where>
+        <ptype>6</ptype>
+        <prefix>"="[ORIGINAL]"</prefix>
+        <suffix> AND "[ORIGINAL]"="[ORIGINAL]</suffix>
+    </boundary>
+
+    <boundary>
+        <level>5</level>
+        <clause>8</clause>
+        <where>1</where>
+        <ptype>6</ptype>
+        <prefix>]-(SELECT 0 WHERE [RANDNUM]=[RANDNUM]</prefix>
+        <suffix>)|[[ORIGINAL]</suffix>
+    </boundary>
+    <!-- End of escaped column name boundaries -->
+
+    <!-- AGAINST boolean full-text search boundaries (http://dev.mysql.com/doc/refman/5.5/en/fulltext-boolean.html) -->
+    <boundary>
+        <level>4</level>
+        <clause>1</clause>
+        <where>1</where>
+        <ptype>2</ptype>
+        <prefix>' IN BOOLEAN MODE)</prefix>
+        <suffix>#</suffix>
+    </boundary>
+    <!-- End of AGAINST boolean full-text search boundaries -->
+</root>
